@@ -1,8 +1,12 @@
 <template>
-  <div id="app">
-
+  <div>
+    <div class="logo container">
+      <img src="./assets/logo.svg" />
+    </div>    
   </div>
 </template>
+
+
 
 <script>
 
