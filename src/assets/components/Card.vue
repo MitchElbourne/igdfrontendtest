@@ -2,13 +2,14 @@
     <div class="card">
         <img class="card-img-top">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
 
+            <img v-bind:src="product.imageThumb" v-bind:alt="product.name" class="card-img-top" />
 
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text">{{product.description}}</p>
 
+            <button class="btn">View Price</button>
 
-            <a href="#" class="btn btn-primary">View Price</a>
         </div>
     </div>
 </template>

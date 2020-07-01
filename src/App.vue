@@ -28,11 +28,18 @@ export default {
   data() {
     return {
       products: [
-        {name: 'blind red'},
-        {name: 'blind blue'},
-        {name: 'blind green'},
-        {name: 'blind purple'},
-        {name: 'blind gold'}
+        {
+          name: 'blind red',
+          descripton: 'This chic and contemporary blackout roller blind is, unsurprisingly, one of the very bestselling products on our website.',
+          imageThumb: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg',
+          imageFull: 'https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+        },
+        {
+          name: 'blind blue',
+          descripton: 'This chic and contemporary blackout roller blind is, unsurprisingly, one of the very bestselling products on our website.',
+          imageThumb: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg',
+          imageFull: 'https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+        }
       ]
     }
   }

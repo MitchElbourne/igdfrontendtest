@@ -1,8 +1,20 @@
+@import './globals/colours';
+
+*,
+*:after,
+*:before {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    outline: none !important;
+}
+
 .logo {
     margin: 2rem auto;
     padding: 0 0 2rem 0;
     text-align: center;
-    border-bottom: 1px solid grey;
+    border-bottom: 2px solid $brown;
     img {
         max-width: 60%;
     }
@@ -11,7 +23,16 @@
 section.cards-container {
     .row {
         .card {
+            border-color: $brown;
             margin-bottom: 2rem;
+            .btn {
+                border: 1px solid rgba($gold, 0.5);
+                background-color: rgba($gold, 0.5);
+                transition: all 200ms linear;
+                &:hover, &:focus { 
+                    background-color: rgba($gold, 0.2);
+                }
+            }
         }
     }
 }
