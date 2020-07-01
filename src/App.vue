@@ -7,7 +7,7 @@
     
     <section class="container cards-container">
       <CardsContainer v-bind:products="products"/>  
-    </section> 
+    </section>
   </div>
 
 </template>
@@ -26,20 +26,17 @@ export default {
   },
   data() {
     return {
-      products:null   
+      products: null   
     }
   },
   created() {
     axios('https://www.interiorgoodsdirect.com/interview/api/products?key=6HJx2R8st$%25Q')
-      .then(function(response) {
-        var products = response.data.data.products
-
-        
-        for (let i = 0; i < products.length; i++) {
-          products[i].id = i;
+      .then(response => {
+        let productList = response.data.data.products
+        for (let i = 0; i < productList.length; i++) {
+          productList[i].id = i;
         }
-        
-        this.data = response
+        this.products = productList
       })
 
   }

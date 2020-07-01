@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <img v-bind:src="product.imageThumb" v-bind:alt="product.name" class="card-img-top" />
+        <img v-bind:src="product.images.main" v-bind:alt="product.name" class="card-img-top" />
         <div class="card-body">
 
             <h5 class="card-title">{{product.name}}</h5>
