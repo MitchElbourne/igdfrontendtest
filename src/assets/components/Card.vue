@@ -1,23 +1,27 @@
 <template>
     <div class="card">
-        <img class="card-img-top">
+        <img v-bind:src="product.imageThumb" v-bind:alt="product.name" class="card-img-top" />
         <div class="card-body">
 
-            <img v-bind:src="product.imageThumb" v-bind:alt="product.name" class="card-img-top" />
-
             <h5 class="card-title">{{product.name}}</h5>
-            <p class="card-text">{{product.descripton}}</p>
+            
+            <div>
+                <b-button v-b-modal.modal-1>Get Price</b-button>
 
-            <button class="btn">View Price</button>
-
+                <b-modal id="modal-1">
+                    <p class="my-4">{{product.name}}</p>
+                </b-modal>
+            </div>
         </div>
     </div>
 </template>
 
 
 <script>
+
 export default {
     name: 'Card',
     props: ['product']
 }
+
 </script>
