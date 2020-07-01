@@ -17,6 +17,7 @@
 <script>
 
 import CardsContainer from './assets/components/CardsContainer.vue'
+const axios = require('axios').default;
 
 export default {
   name: 'App',
@@ -25,21 +26,22 @@ export default {
   },
   data() {
     return {
-      products: [
-        {
-          name: 'blind red',
-          descripton: 'This chic and contemporary blackout roller blind is, unsurprisingly, one of the very bestselling products on our website.',
-          imageThumb: 'https://cdn.interiorgoodsdirect.com/image-system/regular/rollers/roller/window-1200/touched_by_design_deluxe_plain_powder_blue.jpg',
-          imageFull: 'https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-        },
-        {
-          name: 'blind blue',
-          descripton: 'This chic and contemporary blackout roller blind is, unsurprisingly, one of the very bestselling products on our website.',
-          imageThumb: 'https://cdn.interiorgoodsdirect.com/image-system/regular/rollers/roller/window-1200/touched_by_design_deluxe_plain_powder_blue.jpg',
-          imageFull: 'https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-        }
-      ]
+      products:null   
     }
+  },
+  created() {
+    axios('https://www.interiorgoodsdirect.com/interview/api/products?key=6HJx2R8st$%25Q')
+      .then(function(response) {
+        var products = response.data.data.products
+
+        
+        for (let i = 0; i < products.length; i++) {
+          products[i].id = i;
+        }
+        
+        this.data = response
+      })
+
   }
 }
 
