@@ -8,7 +8,10 @@
     }
 }
 
-
-* {
-    // border: 1px solid grey;
+section.cards-container {
+    .row {
+        .card {
+            margin-bottom: 2rem;
+        }
+    }
 }
