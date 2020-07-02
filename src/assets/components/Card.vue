@@ -6,7 +6,7 @@
             <h5 class="card-title">{{product.name}}</h5>
             
            <div>
-                <b-button id="show-btn" @click="showModal">Get Price</b-button>
+                <b-button id="show-btn" @click="showModal" class="btn-gold">Get Price</b-button>
 
                 <b-modal v-bind:ref="'modal-' + product.id" hide-footer hide-header class="modal">
                     <b-button id='close-btn' @click="hideModal"><img src="../close.svg" alt="close-icon"></b-button>
@@ -25,13 +25,19 @@
                             <form action="" class="measurements">
                                 <div class="input-wrapper">
                                     <input :style="{'border-color': width.borderColor}" type="number" placeholder="Width (cm)" v-model="width.value" @input="validateWidth">
-                                    <span class="error">{{errors.widthError}}</span>
+                                    <p class="error">{{errors.widthError}}</p>
                                 </div>
                                 <div class="input-wrapper">
                                     <input :style="{'border-color': drop.borderColor}" type="number" placeholder="Drop (cm)" v-model="drop.value" @input="validateDrop">
-                                    <span class="error">{{errors.dropError}}</span>
+                                    <p class="error">{{errors.dropError}}</p>
                                 </div>
                             </form>
+
+                            <div class="price" v-if="showPrice">
+                                <p class="h1">{{calculatedPrice}}</p>
+                                <button class="w-100 btn-gold">Add to basket</button>
+                            </div>
+
 
 
                         </div>
@@ -53,6 +59,8 @@ export default {
     data() {
         return {
             modalNumber: null,
+            showPrice: false,
+            calculatedPrice: 0,
             width: {
                 value: '',
                 borderColor: 'transparent',
@@ -84,16 +92,19 @@ export default {
             if(width == '') {
                 // If the width input field contains nothing
                 this.width.validated = false
+                this.showPrice = false
                 this.width.borderColor = 'transparent'
                 this.errors.widthError = ''
             } else if(width < min) {
                 // If the width input is smaller than the min limit
                 this.width.validated = false
+                this.showPrice = false
                 this.errors.widthError = 'The min width is: ' + min + 'cm'
                 this.width.borderColor = 'red'
             } else if(width > max) {
                 // If the width value is greater than the max limit
                 this.width.validated = false
+                this.showPrice = false
                 this.errors.widthError = 'The max width is: ' + max + 'cm'
                 this.width.borderColor = 'red'
             } else {
@@ -113,16 +124,19 @@ export default {
             if(drop == '') {
                 // If the drop input field contains nothing
                 this.drop.validated = false
+                this.showPrice = false
                 this.drop.borderColor = 'transparent'
                 this.errors.dropError = ''
             } else if(drop < min) {
                 // If the drop input is smaller than the min limit
                 this.drop.validated = false
+                this.showPrice = false
                 this.errors.dropError = 'The min drop is: ' + min + 'cm'
                 this.drop.borderColor = 'red'
             } else if(drop > max) {
                 // If the drop value is greater than the max limit
                 this.drop.validated = false
+                this.showPrice = false
                 this.errors.dropError = 'The max drop is: ' + max + 'cm'
                 this.drop.borderColor = 'red'
             } else {
@@ -136,7 +150,15 @@ export default {
         },
         displayPrice() {
             if(this.width.validated == true && this.drop.validated == true) {
-                console.log('nic opne')
+                
+                var widthMetres = this.width.value / 100
+                var dropMetres = this.drop.value / 100
+
+                var areaMetresSquared = (widthMetres * dropMetres)
+
+                this.calculatedPrice = '£' + (areaMetresSquared * this.product.price_per_metre_squared).toFixed(2)
+
+                this.showPrice = true
             }
         }
     }

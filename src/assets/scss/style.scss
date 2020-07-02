@@ -1,5 +1,6 @@
 @import './globals/colours';
 
+
 *,
 *:after,
 *:before {
@@ -30,6 +31,18 @@ body {
     }
 }
 
+.btn-gold {
+    border: 1px solid rgba($gold, 0.2);
+    background-color: rgba($gold, 0.5);
+    transition: all 200ms linear;
+    border-radius: 0.2rem;
+    &:hover, &:focus {
+        background-color: rgba($gold, 0.2);
+        border-color: rgba($gold, 0.2);
+        box-shadow: none;
+    }
+}
+
 section.cards-container {
     .row {
         .card {
@@ -42,18 +55,6 @@ section.cards-container {
             .card-body {
                 padding: 0;
                 text-align: center;
-                .btn {
-                    border: 1px solid rgba($gold, 0.5);
-                    background-color: rgba($gold, 0.5);
-                    transition: all 200ms linear;
-                    &:hover { 
-                        background-color: rgba($gold, 0.2);
-                    }
-                    &:focus {
-                        background-color: rgba($gold, 0.2);
-                        box-shadow: none;
-                    }
-                }
             }
         }
     }
@@ -101,21 +102,32 @@ section.cards-container {
                         form.measurements {
                             margin-top: 1rem;
                             display: flex;
+                            justify-content: space-between;
                             .input-wrapper {
-                                position: relative;
+                                width: 46%;
                                 input {
+                                    width: 100%;
+                                    box-shadow: none;
+                                    border: 2px solid grey;
                                     padding: 0.2rem;
                                     &:first-of-type {
                                         margin-right: 1rem;
                                     }
                                 }
                                 .error {
-                                    position: absolute;
-                                    bottom: -2rem;
+                                    font-size: 0.8rem;
+                                    bottom: -1.8rem;
                                     left: 0.1rem;
                                     margin-top: 0.5rem;
-                                    color: rgba(red, 0.9);
+                                    color: rgba(red, 0.8);
                                 }
+                            }
+                        }
+                        .price {
+                            margin-top: 1.5rem;
+                            text-align: center;
+                            p {
+                                margin-bottom: 0.5rem;
                             }
                         }
                     }
