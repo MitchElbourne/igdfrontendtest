@@ -3,6 +3,7 @@
   <div>
     <div class="logo container">
       <img src="./assets/logo.svg" />
+      <p class="font-italic">{{description}}</p>
     </div> 
     
     <section class="container cards-container">
@@ -26,7 +27,8 @@ export default {
   },
   data() {
     return {
-      products: null   
+      products: null,
+      description: null   
     }
   },
   created() {
@@ -37,6 +39,7 @@ export default {
           productList[i].id = i;
         }
         this.products = productList
+        this.description = response.data.data.description
       })
 
   }
