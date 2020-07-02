@@ -36,7 +36,16 @@ export default {
       .then(response => {
         let productList = response.data.data.products
         for (let i = 0; i < productList.length; i++) {
-          productList[i].id = i;
+          var product = productList[i]
+          product.id = i;
+
+          var widthMetres = product.limits.width.min / 100
+          var dropMetres = product.limits.drop.min / 100
+
+          var areaMetresSquared = widthMetres * dropMetres
+
+          productList[i].fromPrice = 'From: £' + (areaMetresSquared * product.price_per_metre_squared).toFixed(2)
+
         }
         this.products = productList
         this.description = response.data.data.description

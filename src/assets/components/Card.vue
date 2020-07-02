@@ -3,8 +3,9 @@
         <img v-bind:src="product.images.thumb" v-bind:alt="product.name" class="card-img-top">
         <div class="card-body">
 
-            <h5 class="card-title">{{product.name}}</h5>
-            
+            <h2 class="card-title h5">{{product.name}}</h2>
+            <p class="from-price">{{product.fromPrice}}</p>
+
            <div>
                 <b-button id="show-btn" @click="showModal" class="btn-gold">Get Price</b-button>
 
@@ -60,7 +61,7 @@ export default {
         return {
             modalNumber: null,
             showPrice: false,
-            calculatedPrice: 0,
+            calculatedPrice: '',
             width: {
                 value: '',
                 borderColor: 'transparent',

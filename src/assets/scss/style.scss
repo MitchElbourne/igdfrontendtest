@@ -55,6 +55,9 @@ section.cards-container {
             .card-body {
                 padding: 0;
                 text-align: center;
+                .from-price {
+                    margin: 0 0 0.5rem 0;
+                }
             }
         }
     }
