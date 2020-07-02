@@ -54,3 +54,26 @@ section.cards-container {
         }
     }
 }
+
+.modal {
+    .modal-dialog {
+        max-width: 70%;
+        .modal-content {
+            .modal-body {
+                #close-btn {
+                    position: absolute;
+                    right: 1rem;
+                    top: 0.5rem;
+                    padding: 0;
+                    background-color: transparent;
+                    border: none;
+                    outline: none;
+                    img {
+                        width: 0.8rem;
+                        height: 0.8rem;
+                    }
+                }
+            }
+        }
+    }
+}
