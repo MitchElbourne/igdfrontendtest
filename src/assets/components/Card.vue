@@ -24,11 +24,11 @@
 
                             <form action="" class="measurements">
                                 <div class="input-wrapper">
-                                    <input type="number" placeholder="Width (cm)" v-model="width.value" @input="validateWidth">
+                                    <input :style="{'border-color': width.borderColor}" type="number" placeholder="Width (cm)" v-model="width.value" @input="validateWidth">
                                     <span class="error">{{errors.widthError}}</span>
                                 </div>
                                 <div class="input-wrapper">
-                                    <input type="number" placeholder="Drop (cm)" v-model="drop.value" @input="validateDrop">
+                                    <input :style="{'border-color': drop.borderColor}" type="number" placeholder="Drop (cm)" v-model="drop.value" @input="validateDrop">
                                     <span class="error">{{errors.dropError}}</span>
                                 </div>
                             </form>
@@ -55,10 +55,12 @@ export default {
             modalNumber: null,
             width: {
                 value: '',
+                borderColor: 'transparent',
                 validated: false
             },
             drop: {
                 value: '',
+                borderColor: 'transparent',
                 validated: false
             },
             errors: {
@@ -75,20 +77,67 @@ export default {
             this.$refs['modal-' + this.product.id].hide()
         },
         validateWidth() {
-            if(this.width.value < this.product.limits.width.min) {
-                this.errors.widthError = 'The min width is: ' + this.product.limits.width.min + 'cm'
-            } else if(this.width.value > this.product.limits.width.max) {
-                this.errors.widthError = 'The max width is: ' + this.product.limits.width.max + 'cm'
-            } else {
-                this.errors.widthError = ''
+            var width = this.width.value
+            var min = this.product.limits.width.min
+            var max = this.product.limits.width.max
 
+            if(width == '') {
+                // If the width input field contains nothing
+                this.width.validated = false
+                this.width.borderColor = 'transparent'
+                this.errors.widthError = ''
+            } else if(width < min) {
+                // If the width input is smaller than the min limit
+                this.width.validated = false
+                this.errors.widthError = 'The min width is: ' + min + 'cm'
+                this.width.borderColor = 'red'
+            } else if(width > max) {
+                // If the width value is greater than the max limit
+                this.width.validated = false
+                this.errors.widthError = 'The max width is: ' + max + 'cm'
+                this.width.borderColor = 'red'
+            } else {
+                // If the width value is between the max and min limits
+                this.width.borderColor = '#93FF96'
+                this.errors.widthError = ''
+                this.width.validated = true
+
+                this.displayPrice()
             }
         },
         validateDrop() {
+            var drop = this.drop.value
+            var min = this.product.limits.drop.min
+            var max = this.product.limits.drop.max
 
+            if(drop == '') {
+                // If the drop input field contains nothing
+                this.drop.validated = false
+                this.drop.borderColor = 'transparent'
+                this.errors.dropError = ''
+            } else if(drop < min) {
+                // If the drop input is smaller than the min limit
+                this.drop.validated = false
+                this.errors.dropError = 'The min drop is: ' + min + 'cm'
+                this.drop.borderColor = 'red'
+            } else if(drop > max) {
+                // If the drop value is greater than the max limit
+                this.drop.validated = false
+                this.errors.dropError = 'The max drop is: ' + max + 'cm'
+                this.drop.borderColor = 'red'
+            } else {
+                // If the drop value is between the max and min limits
+                this.drop.borderColor = '#93FF96'
+                this.errors.dropError = ''
+                this.drop.validated = true
+                
+                this.displayPrice()
+            }
         },
         displayPrice() {
-
+            if(this.width.validated == true && this.drop.validated == true) {
+                console.log('nic opne')
+            }
         }
     }
 }
