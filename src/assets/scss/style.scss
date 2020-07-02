@@ -46,8 +46,12 @@ section.cards-container {
                     border: 1px solid rgba($gold, 0.5);
                     background-color: rgba($gold, 0.5);
                     transition: all 200ms linear;
-                    &:hover, &:focus { 
+                    &:hover { 
                         background-color: rgba($gold, 0.2);
+                    }
+                    &:focus {
+                        background-color: rgba($gold, 0.2);
+                        box-shadow: none;
                     }
                 }
             }
@@ -56,10 +60,6 @@ section.cards-container {
 }
 
 .modal {
-    * {
-        // border: 1px solid red;
-    } 
-    
     .modal-dialog {
         max-width: 70%;
         .modal-content {
@@ -80,10 +80,8 @@ section.cards-container {
                 }
                 .panel-wrapper {
                     display: flex;
-                    // border: 1px solid red;
                     margin-top: 1.5rem;
                     .left-panel, .right-panel {
-                        // border: 1px solid blue;
                         flex: 1 1 50%;
                         padding: 0.5rem;
                     }
@@ -92,8 +90,26 @@ section.cards-container {
                     }
                     .right-panel {
                         padding-right: 2rem;
+                        .product-name {
+                            border-bottom: 1px solid $brown;
+                            padding-bottom: 0.5rem;
+                            margin-bottom: 1rem;
+                        }
                         p:first-of-type {
                             margin-bottom: 2rem;
+                        }
+                        .measurements {
+                            margin-top: 1rem;
+                            input {
+                                padding: 0.2rem;
+                                &:first-of-type {
+                                    margin-right: 1rem;
+                                }
+                            }
+                            .error {
+                                margin-top: 0.5rem;
+                                color: rgba(red, 0.9);
+                            }
                         }
                     }
                 }

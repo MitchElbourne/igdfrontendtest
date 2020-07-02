@@ -16,10 +16,15 @@
                             <img v-bind:src="product.images.main" v-bind:alt="product.name" class="img-fluid">
                         </div>
                         <div class="right-panel">
+
                             <h2 class="product-name">{{product.name}}</h2>
                             <p>{{product.description}}</p>
                             <b>Enter Measurements to get a price:</b>
-
+                            <div class="measurements">
+                                <input type="text" placeholder="Width (cm)">
+                                <input type="text" placeholder="Drop (cm)">
+                                <p class="error">Please enter</p>
+                            </div>
                         </div>
                     </div>
 
