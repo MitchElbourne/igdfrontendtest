@@ -1,6 +1,5 @@
 @import './globals/colours';
 
-
 *,
 *:after,
 *:before {
@@ -15,31 +14,31 @@ body {
     background-color: $white;
 }
 
+.btn-gold {
+    background-color: rgba($gold, 0.5);
+    border: 1px solid rgba($gold, 0.2);
+    border-radius: 0.2rem;
+    transition: all 200ms linear;
+    &:hover, &:focus {
+        box-shadow: none;
+        background-color: rgba($gold, 0.2);
+        border-color: rgba($gold, 0.2);
+    }
+}
+
 .logo {
     margin: 2rem auto;
     padding: 0 0 2rem 0;
     text-align: center;
     p {
-        margin: 3rem auto 0;
         width: 80%;
+        margin: 3rem auto 0;
+        padding: 2rem 0;
         border-top: 1px solid $brown;
         border-bottom: 1px solid $brown;
-        padding: 2rem 0;
     }
     img {
         max-width: 60%;
-    }
-}
-
-.btn-gold {
-    border: 1px solid rgba($gold, 0.2);
-    background-color: rgba($gold, 0.5);
-    transition: all 200ms linear;
-    border-radius: 0.2rem;
-    &:hover, &:focus {
-        background-color: rgba($gold, 0.2);
-        border-color: rgba($gold, 0.2);
-        box-shadow: none;
     }
 }
 
@@ -74,8 +73,8 @@ section.cards-container {
                     right: 1rem;
                     top: 0.5rem;
                     padding: 0;
-                    background-color: transparent;
                     border: none;
+                    background-color: transparent;
                     outline: none;
                     img {
                         width: 0.8rem;
@@ -103,26 +102,24 @@ section.cards-container {
                             margin-bottom: 2rem;
                         }
                         form.measurements {
-                            margin-top: 1rem;
                             display: flex;
                             justify-content: space-between;
+                            margin-top: 1rem;
                             .input-wrapper {
                                 width: 46%;
                                 input {
                                     width: 100%;
+                                    padding: 0.2rem;
                                     box-shadow: none;
                                     border: 2px solid grey;
-                                    padding: 0.2rem;
                                     &:first-of-type {
                                         margin-right: 1rem;
                                     }
                                 }
                                 .error {
-                                    font-size: 0.8rem;
-                                    bottom: -1.8rem;
-                                    left: 0.1rem;
                                     margin-top: 0.5rem;
                                     color: rgba(red, 0.8);
+                                    font-size: 0.8rem;
                                 }
                             }
                         }
