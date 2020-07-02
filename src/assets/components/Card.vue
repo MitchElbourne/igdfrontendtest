@@ -5,11 +5,13 @@
 
             <h5 class="card-title">{{product.name}}</h5>
             
-            <div>
-                <b-button v-b-modal.modal-1>Get Price</b-button>
+           <div>
+                <b-button id="show-btn" @click="showModal">Get Price</b-button>
 
-                <b-modal id="modal-1">
-                    <p class="my-4">{{product.name}}</p>
+                <b-modal v-bind:ref="'modal-' + product.id" hide-footer v-bind:title="product.name">
+                    <div class="d-block text-center">
+                        
+                    </div>
                 </b-modal>
             </div>
         </div>
@@ -21,7 +23,20 @@
 
 export default {
     name: 'Card',
-    props: ['product']
+    props: ['product'],
+    data() {
+        return {
+            modalNumber: null
+        }
+    },
+    methods: {
+        showModal() {
+            this.$refs['modal-' + this.product.id].show()
+        },
+        hideModal() {
+            this.$refs['modal-' + this.product.id].hide()
+        }
+    }
 }
 
 </script>
