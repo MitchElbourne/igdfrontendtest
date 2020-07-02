@@ -56,10 +56,15 @@ section.cards-container {
 }
 
 .modal {
+    * {
+        // border: 1px solid red;
+    } 
+    
     .modal-dialog {
         max-width: 70%;
         .modal-content {
             .modal-body {
+                background-color: $white;
                 #close-btn {
                     position: absolute;
                     right: 1rem;
@@ -71,6 +76,25 @@ section.cards-container {
                     img {
                         width: 0.8rem;
                         height: 0.8rem;
+                    }
+                }
+                .panel-wrapper {
+                    display: flex;
+                    // border: 1px solid red;
+                    margin-top: 1.5rem;
+                    .left-panel, .right-panel {
+                        // border: 1px solid blue;
+                        flex: 1 1 50%;
+                        padding: 0.5rem;
+                    }
+                    .left-panel {
+                        align-items: center;
+                    }
+                    .right-panel {
+                        padding-right: 2rem;
+                        p:first-of-type {
+                            margin-bottom: 2rem;
+                        }
                     }
                 }
             }
