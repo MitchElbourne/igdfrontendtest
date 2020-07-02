@@ -20,11 +20,20 @@
                             <h2 class="product-name">{{product.name}}</h2>
                             <p>{{product.description}}</p>
                             <b>Enter Measurements to get a price:</b>
-                            <div class="measurements">
-                                <input type="text" placeholder="Width (cm)">
-                                <input type="text" placeholder="Drop (cm)">
-                                <p class="error">Please enter</p>
-                            </div>
+
+
+                            <form action="" class="measurements">
+                                <div class="input-wrapper">
+                                    <input type="number" placeholder="Width (cm)" v-model="width.value" @input="validateWidth">
+                                    <span class="error">{{errors.widthError}}</span>
+                                </div>
+                                <div class="input-wrapper">
+                                    <input type="number" placeholder="Drop (cm)" v-model="drop.value" @input="validateDrop">
+                                    <span class="error">{{errors.dropError}}</span>
+                                </div>
+                            </form>
+
+
                         </div>
                     </div>
 
@@ -43,7 +52,19 @@ export default {
     props: ['product'],
     data() {
         return {
-            modalNumber: null
+            modalNumber: null,
+            width: {
+                value: '',
+                validated: false
+            },
+            drop: {
+                value: '',
+                validated: false
+            },
+            errors: {
+                widthError: '',
+                dropError: ''
+            }
         }
     },
     methods: {
@@ -52,6 +73,22 @@ export default {
         },
         hideModal() {
             this.$refs['modal-' + this.product.id].hide()
+        },
+        validateWidth() {
+            if(this.width.value < this.product.limits.width.min) {
+                this.errors.widthError = 'The min width is: ' + this.product.limits.width.min + 'cm'
+            } else if(this.width.value > this.product.limits.width.max) {
+                this.errors.widthError = 'The max width is: ' + this.product.limits.width.max + 'cm'
+            } else {
+                this.errors.widthError = ''
+
+            }
+        },
+        validateDrop() {
+
+        },
+        displayPrice() {
+
         }
     }
 }

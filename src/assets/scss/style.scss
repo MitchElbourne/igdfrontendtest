@@ -98,17 +98,24 @@ section.cards-container {
                         p:first-of-type {
                             margin-bottom: 2rem;
                         }
-                        .measurements {
+                        form.measurements {
                             margin-top: 1rem;
-                            input {
-                                padding: 0.2rem;
-                                &:first-of-type {
-                                    margin-right: 1rem;
+                            display: flex;
+                            .input-wrapper {
+                                position: relative;
+                                input {
+                                    padding: 0.2rem;
+                                    &:first-of-type {
+                                        margin-right: 1rem;
+                                    }
                                 }
-                            }
-                            .error {
-                                margin-top: 0.5rem;
-                                color: rgba(red, 0.9);
+                                .error {
+                                    position: absolute;
+                                    bottom: -2rem;
+                                    left: 0.1rem;
+                                    margin-top: 0.5rem;
+                                    color: rgba(red, 0.9);
+                                }
                             }
                         }
                     }
