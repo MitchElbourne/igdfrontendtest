@@ -1,4 +1,5 @@
 @import './globals/colours';
+@import './globals/gridpoints';
 
 *,
 *:after,
@@ -12,6 +13,19 @@
 
 body {
     background-color: $white;
+    padding-bottom: 10rem;
+    @include media-breakpoint-down(sm) {
+        padding-bottom: 5rem;
+        p {
+            font-size: 0.8rem;
+        }
+    }
+    &.modal-open {
+        padding-right: 16px;
+        @include media-breakpoint-down(xs) {
+            padding-right: 0;
+        }
+    }
 }
 
 .btn-gold {
@@ -19,10 +33,12 @@ body {
     border: 1px solid rgba($gold, 0.2);
     border-radius: 0.2rem;
     transition: all 200ms linear;
+    color: black;
     &:hover, &:focus {
         box-shadow: none;
         background-color: rgba($gold, 0.2);
         border-color: rgba($gold, 0.2);
+        color: black;
     }
 }
 
@@ -30,6 +46,9 @@ body {
     margin: 2rem auto;
     padding: 0 0 2rem 0;
     text-align: center;
+    img {
+        max-width: 60%;
+    }
     p {
         width: 80%;
         margin: 3rem auto 0;
@@ -37,8 +56,15 @@ body {
         border-top: 1px solid $brown;
         border-bottom: 1px solid $brown;
     }
-    img {
-        max-width: 60%;
+    @include media-breakpoint-down(sm) {
+        margin: 2rem 0 0 0;
+        img {
+            max-width: 80%;
+        }
+        p {
+            margin: 1.5rem auto 0;
+            padding: 1rem 0;
+        }
     }
 }
 
@@ -94,9 +120,9 @@ section.cards-container {
                     .right-panel {
                         padding-right: 2rem;
                         .product-name {
-                            border-bottom: 1px solid $brown;
-                            padding-bottom: 0.5rem;
                             margin-bottom: 1rem;
+                            padding-bottom: 0.5rem;
+                            border-bottom: 1px solid $brown;
                         }
                         p:first-of-type {
                             margin-bottom: 2rem;
@@ -130,6 +156,66 @@ section.cards-container {
                                 margin-bottom: 0.5rem;
                             }
                         }
+                    }
+                }
+            }
+        }
+    }
+    @include media-breakpoint-down(md) {
+        .modal-dialog {
+            max-width: 90%;
+            height: calc(100% - 3.5rem);
+            .modal-content {
+                height: 100%;
+            }
+        }
+    }
+    @include media-breakpoint-down(sm) {
+        .modal-dialog {
+            .modal-content .modal-body .panel-wrapper {
+                flex-direction: column;
+                .left-panel {
+                    margin-bottom: 1rem;
+                    text-align: center;
+                    img {
+                        width: 50%;
+                    }
+                }
+                .right-panel {
+                    padding: 0 2rem;
+                }
+            }
+        }
+    }
+    @include media-breakpoint-down(xs) {
+        .modal-dialog {
+            margin: 1rem auto;
+            height: calc(100% - 2rem);
+            .modal-content .modal-body .panel-wrapper {
+                .left-panel {
+                    img {
+                        width: 70%;
+                    }
+                }
+                .right-panel {
+                    padding: 0 0.5rem;
+                    .product-name {
+                        font-size: 1.5rem;
+                    }
+                    form.measurements {
+                        flex-direction: column;
+                        .input-wrapper {
+                            position: relative;
+                            width: 100%;
+                            margin-bottom: 2rem;
+                            .error {
+                                position: absolute;
+                                top: 1.5rem;
+                            }
+                        }
+                    }
+                    .price {
+                        margin-top: 0;
                     }
                 }
             }
