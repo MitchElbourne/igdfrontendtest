@@ -2,23 +2,16 @@
 
 ## Project setup
 ```
+The assessment has been built with the following frameworks and packages:
+- VueJS: 2.6.11
+- Axios: 0.19.2
+- Bootstrap: 4.5.0
+- Bootstrap-Vue: 2.15.0
+
+
+To run the project, download the repository and use:
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
-```
 
-### Compiles and minifies for production
+A development server will be started (default is localhost:8080)
 ```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
