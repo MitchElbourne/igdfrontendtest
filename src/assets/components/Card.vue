@@ -70,12 +70,14 @@ export default {
         }
     },
     methods: {
+        // Methods for showing and hiding the modal
         showModal() {
             this.$refs['modal-' + this.product.id].show()
         },
         hideModal() {
             this.$refs['modal-' + this.product.id].hide()
         },
+        // Check the input fields for the product component and compare to min and max values
         validateWidth() {
             var width = this.width.value
             var min = this.product.limits.width.min
@@ -140,6 +142,7 @@ export default {
                 this.displayPrice()
             }
         },
+        // The code in this method will run if both the width and drop are viable
         displayPrice() {
             if(this.width.validated == true && this.drop.validated == true) {
                 

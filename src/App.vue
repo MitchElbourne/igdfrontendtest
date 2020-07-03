@@ -35,8 +35,10 @@ export default {
     axios('https://www.interiorgoodsdirect.com/interview/api/products?key=6HJx2R8st$%25Q')
       .then(response => {
         let productList = response.data.data.products
+  
         for (let i = 0; i < productList.length; i++) {
           var product = productList[i]
+          // Set a unique ID for each product
           product.id = i;
 
           var widthMetres = product.limits.width.min / 100
@@ -44,12 +46,17 @@ export default {
 
           var areaMetresSquared = widthMetres * dropMetres
 
+          // Assign the from price to the product
           productList[i].fromPrice = 'From: £' + (areaMetresSquared * product.price_per_metre_squared).toFixed(2)
 
         }
+        // Set the data for the component
         this.products = productList
         this.description = response.data.data.description
       })
+
+
+
 
   }
 }
